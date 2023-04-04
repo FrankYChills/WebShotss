@@ -1,5 +1,6 @@
 import { useState } from "react";
 import getImage from "../getImage";
+import RotateLoader from "react-spinners/RotateLoader";
 
 const InputForm = () => {
   const [url, setUrl] = useState("");
@@ -7,7 +8,10 @@ const InputForm = () => {
   const [isLoading, setLoading] = useState(false);
   const [image, setImage] = useState("");
   const [gotImage, setGotImage] = useState(false);
+  const [selector, setSelector] = useState("");
+  const [waitTime, setWaitTime] = useState(0);
   const [fullPage, setFullPage] = useState(false);
+  const [gdpr, setGdpr] = useState(false);
   const [imgExport, setImgExport] = useState("png");
   const [popUp, setPopup] = useState(false);
   const [device, setDevice] = useState("laptop");
@@ -16,6 +20,7 @@ const InputForm = () => {
   const toggleexport = (e) => setImgExport(e.target.value);
   const togglePopups = (e) => setPopup(e.target.value);
   const toggleDevice = (e) => setDevice(e.target.value);
+  const toggleGdpr = (e) => setGdpr(e.target.value);
 
   const extraFeatures = { fullPage, imgExport, popUp, device };
 
@@ -34,17 +39,6 @@ const InputForm = () => {
     <div className="main_div">
       <form className="shot_form">
         <div className="fm_inp">
-          <label htmlFor="url">URL</label>{" "}
-          <input
-            className="inp"
-            type="text"
-            name="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter Any website URL"
-          />
-        </div>
-        <div className="fm_inp">
           <label htmlFor="url">API Key</label>{" "}
           <input
             className="inp"
@@ -54,6 +48,18 @@ const InputForm = () => {
             onChange={(e) => setKey(e.target.value)}
             style={{ borderColor: "green" }}
             placeholder="Enter Your API Key"
+          />
+        </div>
+
+        <div className="fm_inp">
+          <label htmlFor="url">URL</label>
+          <input
+            className="inp"
+            type="text"
+            name="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder="Enter Any website URL"
           />
         </div>
         <button
@@ -73,6 +79,46 @@ const InputForm = () => {
           ""
         )}
         <div className="features">
+          <div className="selector">
+            <label htmlFor="selector">Selector&ensp;</label>
+            <input
+              type="text"
+              className="inp"
+              placeholder="Enter the selector"
+              value={selector}
+              onChange={(e) => setSelector(e.target.value)}
+            />
+          </div>
+          <div className="wait">
+            <label htmlFor="wait">Wait For&ensp;</label>
+            <input
+              type="number"
+              className="inp"
+              placeholder="Seconds to wait to shot"
+              value={waitTime}
+              onChange={(e) => setWaitTime(e.target.value)}
+            />
+          </div>
+          <div className="gdpr">
+            <label htmlFor="gdpr">GDPR&ensp;</label>
+            <input
+              type="radio"
+              name="gdpr"
+              id="gdpr"
+              value={true}
+              onClick={toggleGdpr}
+            />
+            <label htmlFor="true">True</label>
+            &ensp;
+            <input
+              type="radio"
+              name="gdpr"
+              id="gdpr"
+              value={false}
+              onClick={toggleGdpr}
+            />
+            <label htmlFor="false">False</label>
+          </div>
           <div className="fullpage">
             <label htmlFor="fullpage">Full Page Shot&ensp;</label>
             <input
@@ -187,7 +233,9 @@ const InputForm = () => {
         {!isLoading && !gotImage ? (
           <h2>Your Image will be shown here</h2>
         ) : isLoading && !gotImage ? (
-          <h2>Loading ...</h2>
+          <h2>
+            <RotateLoader color="#36d7b7" />
+          </h2>
         ) : !isLoading && gotImage ? (
           <div className="img_div">
             <img src={image} className="res_img" />
