@@ -1,7 +1,9 @@
 import axios from "axios";
 
-export default async function getImage(url, key) {
+export default async function getImage(url, key, features) {
   var expo_url = "https://website-screenshot-api.exponential.host/";
+
+  console.log(url);
 
   const res = await axios.get("https://proxy.cors.sh/" + expo_url, {
     headers: {
@@ -10,6 +12,10 @@ export default async function getImage(url, key) {
     },
     params: {
       url: url,
+      capture_full_page: features.fullPage,
+      hide_popups: features.popUp,
+      device: features.device,
+      export_format: features.imgExport,
     },
     responseType: "blob",
   });
