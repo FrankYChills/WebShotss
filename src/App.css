@@ -8,12 +8,16 @@ h1:hover {
   color: purple;
 }
 
+.main_div {
+  display: flex;
+}
+
 .shot_form {
   color: white;
   display: flex;
   flex-direction: column;
-
-  min-width: 40vw;
+  flex: 2;
+  max-width: 40vw;
   min-height: 15vh;
 }
 
@@ -51,6 +55,53 @@ h1:hover {
   color: white;
 }
 
-.btn:hover {
-  background-color: green;
+.btn:disabled {
+  background-color: grey;
+}
+
+.down_image {
+  font-size: 25px;
+  text-decoration: none;
+  margin: 15px auto 0 auto;
+  background-color: teal;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+
+.img_div {
+  color: white;
+  flex: 1;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid orange;
+}
+
+.res_img {
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+@media only screen and (max-width: 1240px) {
+  .main_div {
+    flex-direction: column;
+  }
+
+  .img_div {
+    margin-top: 30px;
+  }
+
+  .shot_form {
+    min-width: 90vw;
+  }
+
+  .inp {
+    font-size: 15px;
+    padding: 0px;
+  }
 }
