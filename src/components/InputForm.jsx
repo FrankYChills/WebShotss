@@ -10,8 +10,9 @@ const InputForm = () => {
   const [gotImage, setGotImage] = useState(false);
   const [selector, setSelector] = useState("");
   const [waitTime, setWaitTime] = useState(0);
-  const [fullPage, setFullPage] = useState(false);
+
   const [gdpr, setGdpr] = useState(false);
+  const [fullPage, setFullPage] = useState(false);
   const [imgExport, setImgExport] = useState("png");
   const [popUp, setPopup] = useState(false);
   const [device, setDevice] = useState("laptop");
@@ -22,7 +23,15 @@ const InputForm = () => {
   const toggleDevice = (e) => setDevice(e.target.value);
   const toggleGdpr = (e) => setGdpr(e.target.value);
 
-  const extraFeatures = { fullPage, imgExport, popUp, device };
+  const extraFeatures = {
+    fullPage,
+    imgExport,
+    popUp,
+    device,
+    waitTime,
+    gdpr,
+    selector,
+  };
 
   const handleSubmit = async (e) => {
     setGotImage(false);
@@ -139,7 +148,7 @@ const InputForm = () => {
             />
             <label htmlFor="false">False</label>
           </div>
-          <div className="export">
+          {/* <div className="export">
             <label htmlFor="export">Export In&ensp;</label>
             <input
               type="radio"
@@ -167,7 +176,7 @@ const InputForm = () => {
               onClick={toggleexport}
             />
             <label htmlFor="export">WEBP</label>
-          </div>
+          </div> */}
           <div className="popups">
             <label htmlFor="popups">Hide PopUps&ensp;</label>
             <input

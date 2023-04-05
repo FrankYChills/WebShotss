@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <h1>WebShots</h1>
       <p>
-        An Web app for getting pictures of websites using &ensp;
+        An Web app for getting Screenshots of websites using &ensp;
         <a href="https://www.exponentialhost.com/marketplace/website-screenshot-api">
           Exponential API
         </a>
