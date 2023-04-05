@@ -68,7 +68,7 @@ const InputForm = () => {
             name="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="Enter Any website URL (Don't include http:// or https://)"
+            placeholder="Enter website URL (Don't include http:// or https://)"
           />
         </div>
         <button
